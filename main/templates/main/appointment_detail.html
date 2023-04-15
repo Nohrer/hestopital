@@ -1,0 +1,177 @@
+{% extends 'base_dashboard_receptionist.html' %} {% load static%}{% block page%}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+  }
+  h1 {
+    color: #000000;
+    padding: 0;
+    padding-bottom: 36px;
+    text-align: center;
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: lighter;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 2.5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"],
+  select,
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #bdbdbd;
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(
+      90deg,
+      rgb(63, 88, 88) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgb(63, 88, 88) 100%
+    );
+    color: white;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.8s;
+  }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    row-gap: 0;
+  }
+
+  .span-2 {
+    grid-column: span 2;
+  }
+  .grid-item {
+    padding: 7px;
+  }
+
+  .grid-item:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  caption {
+    padding: 12px 34px;
+    background: linear-gradient(
+      90deg,
+      rgb(76, 94, 94) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgb(76, 94, 94) 100%
+    );
+    color: white;
+    font-size: 20px;
+  }
+  label {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  nav {
+    height: 100vh !important;
+  }
+  .table {
+    margin-bottom: 64px;
+  }
+  h3 {
+    text-align: center;
+    margin-bottom: 18px;
+    font-size: 24px;
+  }
+  button:hover {
+    color: #171717;
+    font-weight: bolder;
+    background: linear-gradient(
+      90deg,
+      rgb(185, 195, 195) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgb(212, 220, 220) 100%
+    );
+  }
+</style>
+
+<h1>Appointment Details</h1>
+<h2>Appointments with {{ appointment.doctor }} on {{ selected_date }}</h2>
+
+<form method="get">
+  <div class="wrap">
+    <div class="grid-item">
+      <label for="selected_date">Select a date:</label>
+      <input
+        type="date"
+        name="selected_date"
+        id="selected_date"
+        value="{{ selected_date }}"
+        style="margin-bottom: 8px"
+      />
+    </div>
+    <div class="grid-item">
+      <div style="height: 30.4px"></div>
+      <button type="submit">Search</button>
+    </div>
+  </div>
+</form>
+
+<table class="table">
+  <caption>
+    List of Appointments for the day
+  </caption>
+  <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Time</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for appt in doctor_appointments %}
+    <tr>
+      <td>{{ appt.patient }}</td>
+      <td>{{ appt.time|default:"Not specified" }}</td>
+      <td>{{ appt.get_status_display }}</td>
+    </tr>
+    {% empty %}
+    <span style="margin-left: 20px; font-weight: bold">
+      You Have No Requests</span
+    >
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Update Appointment Status</h3>
+<form method="post">
+  {% load crispy_forms_tags%} {% csrf_token %}
+  <div class="wrap">
+    <div class="grid-item">{{form.status|as_crispy_field}}</div>
+    <div class="grid-item">{{form.time|as_crispy_field}}</div>
+    <div class="grid-item">{{form.cause|as_crispy_field}}</div>
+    <div class="grid-item">{{form.date|as_crispy_field}}</div>
+  </div>
+  {% include 'main/messages.html' %}
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

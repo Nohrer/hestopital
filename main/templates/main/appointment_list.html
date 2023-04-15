@@ -1,0 +1,135 @@
+{% extends 'base_dashboard_receptionist.html' %} {% load static%}{% block page%}
+<div class="main-top">
+
+  <br />
+  <form
+    method="get"
+    action="{% url 'main:search_appointment' %}"
+    class="search"
+    id="search-bar"
+  >
+    <tr>
+      <td><p></p></td>
+        {% include 'main/messages.html' %}
+      <div class="search-box">
+        <button class="btn-search">
+          <i class="fas fa-search" id="piko"></i>
+        </button>
+        <input
+          type="search"
+          class="search__input"
+          placeholder="Type to Search..."
+          name="q"
+        />
+      </div>
+    </tr>
+  </form>
+</div>
+
+<script>
+  const toggleSearch = (search, button) => {
+    const searchBar = document.getElementById(search),
+      searchButton = document.getElementById(button);
+
+    searchButton.addEventListener("click", () => {
+      searchBar.classList.toggle("show-search");
+    });
+  };
+  toggleSearch("search-bar", "search-button");
+</script>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Patient Requesting</th>
+      <th>Doctor Requested</th>
+      <th>Date</th>
+      <th>Hour</th>
+      <th>complete</th>
+      <th>status</th>
+      <th>Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for appointment in appointments %}
+
+    <tr>
+      <td>{{appointment.patient}}</td>
+      <td>{{appointment.doctor}}</td>
+      <td>{{appointment.date}}</td>
+      <td>{{appointment.time}}</td>
+      <td>{{appointment.complete}}</td>
+      {% if appointment.status == "cancelled" %}
+      <td>
+        <span
+          style="
+            background-color: red;
+            border-radius: 20px;
+            display: inline-block;
+            padding: 6px 16px;
+            font-weight: bold;
+          "
+          >{{appointment.status}}</span
+        >
+      </td>
+      {% elif appointment.status == "requested" %}
+      <td>
+        <span
+          style="
+            background-color: yellow;
+            border-radius: 20px;
+            display: inline-block;
+            padding: 6px 16px;
+            font-weight: bold;
+          "
+          >{{appointment.status}}</span
+        >
+      </td>
+      {% else %}
+
+      <td>
+        <span
+          style="
+            background-color: green;
+            border-radius: 20px;
+            display: inline-block;
+            padding: 6px 16px;
+            font-weight: bold;
+          "
+          >{{appointment.status}}</span
+        >
+      </td>
+      {% endif %}
+
+      <td style="text-align: left; vertical-align: middle">
+        <form action="{% url 'main:appointment_detail' appointment.id %}">
+          <button type="submit" class="back">Edit</button>
+        </form>
+      </td>
+    </tr>
+    {% empty %}
+    <span style="margin-left: 20px; font-weight: bold"
+      >You Have No Requests</span
+    >
+    {% endfor %}
+  </tbody>
+</table>
+<div class="pagination">
+  <span class="step-links">
+    {% if appointments.has_previous %}
+    <!-- <a href="?page=1">first</a> -->
+    <a href="?page={{ appointments.previous_page_number }}">&laquo; previous</a>
+    {% endif %}
+
+    <span class="current">
+      Page {{ appointments.number }} of {{ appointments.paginator.num_pages }}.
+    </span>
+
+    {% if appointments.has_next %}
+    <!-- <a href="?page={{ appointments.paginator.num_pages }}">last</a> -->
+    <a href="?page={{ appointments.next_page_number }}">next &raquo;</a>
+
+    {% endif %}
+  </span>
+</div>
+{% endblock%}

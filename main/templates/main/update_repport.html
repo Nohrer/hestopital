@@ -1,0 +1,93 @@
+{% extends 'base_dashboard_doctor.html' %} {% load static %} {% block page %}
+
+<style>
+  input,
+  textarea,
+  button,
+  select {
+    margin: 12px 8px;
+    padding: 12px 8px;
+    font-size: 15px;
+    border-radius: 8px;
+    width: 800px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  label {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  button {
+    text-align: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    background: linear-gradient(
+      90deg,
+      rgba(124, 159, 159, 1) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgba(124, 159, 159, 1) 100%
+    );
+    font-size: 20px;
+    color: black;
+    transition: 0.8s all;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(39, 48, 48, 1) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgba(39, 48, 48, 1) 100%
+    );
+    color: white;
+  }
+
+  nav {
+    height: 100vh !important;
+  }
+  legend {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+</style>
+
+<div
+  style="
+    display: flex;
+
+    align-items: center;
+    /* justify-content: center; */
+    margin: 0 auto;
+  "
+>
+  <form method="post" style="width: 50%">
+    {% load crispy_forms_tags %} {% csrf_token %}
+    <fieldset>
+      <legend>Report</legend>
+      <div class="form-group">{{ form.disease|as_crispy_field }}</div>
+      <div class="form-group">{{ form.date|as_crispy_field }}</div>
+      <div class="form-group">{{ form.remarques|as_crispy_field }}</div>
+      <div class="form-group">{{ form.medical_history|as_crispy_field }}</div>
+      <div class="form-group">{{ form.ongoing_treatment|as_crispy_field }}</div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Ordonnance</legend>
+      <div class="form-group">{{ form.medications|as_crispy_field }}</div>
+      <div class="form-group">{{ form.notes|as_crispy_field }}</div>
+    </fieldset>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

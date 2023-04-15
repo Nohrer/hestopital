@@ -1,0 +1,383 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hestopital</title>
+    <link rel="stylesheet" href="{% static 'main/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/queries.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/yourcode.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script defer src="{% static 'main/js/phone_menu.js' %} "></script>
+  </head>
+  <body>
+    <!-- <-----HERO_SECTION----->
+    <section class="section-hero">
+      <header class="header">
+        <img
+          src="{% static 'main/img/logo.png'%}"
+          alt="Hestopital logo"
+          class="logo"
+        />
+        <nav class="header-navigation">
+          <a href="#services" class="navigation-link">Services</a
+          ><a href="#about" class="navigation-link">About us</a
+          ><a href="#doctors" class="navigation-link">Doctors</a
+          ><a href="#contact" class="navigation-link">Contact us</a>
+          <a href="accounts/" class="navigation-link btn">Login</a>
+        </nav>
+        <button class="btn-mobile-nav">
+          <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+          <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
+      </header>
+
+      <div class="hero">
+        <div class="hero-text-box">
+          <h1 class="hero-header">
+            Meet the best <b>country doctors</b> in one place
+          </h1>
+          <p class="hero-paragraphe">
+            We provide accessible and affordable healthcare services. <br />
+            Our experienced team is dedicated to providing personalized care to
+            every patient.
+          </p>
+          <div class="hero-testemonials">
+            <div class="testemonials-img">
+              <img
+                src="{% static 'main/img/customers/img1.jpg'%}"
+                alt="patient image"
+              />
+              <img
+                src="{% static 'main/img/customers/img2.jpg'%}"
+                alt="patient image"
+              />
+              <img
+                src="{% static 'main/img/customers/img3.jpg'%}"
+                alt="patient image"
+              />
+              <img
+                src="{% static 'main/img/customers/img4.jpg'%}"
+                alt="patient image"
+              />
+              <img
+                src="{% static 'main/img/customers/img5.jpg'%}"
+                alt="patient image"
+              />
+              <img
+                src="{% static 'main/img/customers/img6.jpg'%}"
+                alt="patient image"
+              />
+            </div>
+            <p class="testemonials-para">
+              <span> 250,000+</span> patient cuered !
+            </p>
+          </div>
+          <a href="#" class="btn">Contact us</a>
+        </div>
+      </div>
+    </section>
+    <!-- <----ABOUT US SECTION------->
+    <section class="about" id="about">
+      <h2 class="about-header hero-header">Why <b> HESTOPITAL</b></h2>
+      <div class="about-content">
+        <p class="about-para hero-paragraphe">
+          Nowadays, patients have plenty of options when it comes to choosing a
+          place where they can receive care, and it is vital to make an informed
+          decision. Sheba Medical Center, ranked by Newsweek among the World's
+          Top 10 Hospitals for the past four years, is an international leader
+          in medical innovation, collaborating with health centers around the
+          globe to develop groundbreaking techniques and life-saving treatments.
+          <br />
+          <br />
+
+          Our all-inclusive medical facility features 159 medical departments
+          and clinics, and treats over 1 million patients annually. While
+          constantly improving the-first class medicine and services provided at
+          Sheba, we never lose sight of what matters - the individual, and are
+          deeply committed to delivering patient-centric, compassionate, and
+          personalized care.
+        </p>
+        <div class="cercle-div">
+          <span class="cercle cercle-1"></span>
+          <span class="cercle cercle-2"></span>
+          <img
+            src="{% static 'main/img/doctora.jpg'%}"
+            alt="a female doctor holding black box"
+            class="about-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- <-----SERVICE-SECTION----->
+
+    <section class="section-service" id="services">
+      <h2 class="services-header hero-header">
+        <span class="cercle cercle-3"></span>Services
+      </h2>
+      <div class="services-imgs">
+        <div class="service-case">
+          <img
+            src="{% static 'main/img/services/service1.jpg'%}"
+            alt="a heart operation"
+          />
+          <br />
+          <span>Chirology</span>
+        </div>
+        <div class="service-case">
+          <img
+            src="{% static 'main/img/services/service2.jpg'%}"
+            alt="a girl lying in hospital bed"
+          />
+          <br />
+          <span>Oncology</span>
+        </div>
+        <div class="service-case">
+          <img
+            src="{% static 'main/img/services/service3.png'%}"
+            alt="an ulistration of a doctor and a human brain"
+          />
+          <br />
+          <span>Neurology</span>
+        </div>
+        <div class="service-case">
+          <img
+            src="{% static 'main/img/services/service4.jpg'%}"
+            alt="an ullistration of human heart in human body"
+          />
+          <br />
+          <span>Cardiology</span>
+        </div>
+        <div class="service-case">
+          <img
+            src="{% static 'main/img/services/service5.png'%}"
+            alt="an ulistration of a men entring scaning machine and a doctor watching him"
+          />
+          <br />
+          <span>Gastroenterology</span>
+        </div>
+        <div class="service-case">
+          <img
+            src="{% static 'main/img/services/service6.jpg'%}"
+            alt="a smily kid getting operated by a female doctor"
+          />
+          <br />
+          <span>Pediatrics</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- <-----DOCTORS-SECTION----->
+    <section class="section-doctor" id="doctors">
+      <div class="doctor-header-style">
+        <span></span>
+        <h2 class="doctor-header hero-header">Doctors</h2>
+      </div>
+      <div class="doctors">
+        <div class="doctor">
+          <img
+            src="{% static 'main/img/doctors/doctor1.jpg'%}"
+            alt="image of a doctor"
+          />
+          <br />
+          <span class="doctor-name">Dr.Benmoussa</span>
+          <br />
+          <span class="doctor-work">Chirology</span>
+        </div>
+        <div class="doctor">
+          <img
+            src="{% static 'main/img/doctors/doctor2.jpg'%}"
+            alt="image of a doctor"
+          />
+          <br />
+          <span class="doctor-name">Dr.Mossaid</span>
+          <br />
+          <span class="doctor-work">Neurology</span>
+        </div>
+        <div class="doctor">
+          <img
+            src="{% static 'main/img/doctors/doctor3.jpg'%}"
+            alt="image of a doctor"
+          />
+          <br />
+          <span class="doctor-name">Dr.Motawakil</span>
+          <br />
+          <span class="doctor-work">Oncology</span>
+        </div>
+        <div class="doctor">
+          <img
+            src="{% static 'main/img/doctors/doctor4.jpg'%}"
+            alt="image of a doctor"
+          />
+          <br />
+          <span class="doctor-name">Dr.Dohaybi</span>
+          <br />
+          <span class="doctor-work">Pediatrics</span>
+        </div>
+        <div class="doctor">
+          <img
+            src="{% static 'main/img/doctors/doctor5.jpg'%}"
+            alt="image of a doctor"
+          />
+          <br />
+          <span class="doctor-name">Dr.Chinawi</span>
+          <br />
+          <span class="doctor-work">Cardiology</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <div class="footer-info">
+        <div class="contact">
+          <table>
+            <tr>
+              <td colspan="2" style="padding-bottom: 0">
+                <span class="footer-about-header"><b> Contact us</b></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                  />
+                </svg>
+              </td>
+              <td>Boulevad Hassan 2,<br /><b> Oujda Maroc</b></td>
+            </tr>
+            <tr>
+              <td>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <a href=""><b> +212 712991287</b></a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                  />
+                </svg>
+              </td>
+              <td><a href=""> info@hestopital.info.ma</a></td>
+            </tr>
+          </table>
+        </div>
+        <div class="footer-about">
+          <span class="footer-about-header"><b> About the Hospital</b></span>
+          <br />
+          <p class="footer-about-para">
+            We provide exceptional healthcare services with a highly trained
+            team of medical professionals who offer personalized care using the
+            latest technology. Trust us to be your healthcare provider.
+          </p>
+          <div class="footer-media">
+            <a href="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                class="icon2"
+              >
+                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                <path
+                  d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
+                />
+              </svg>
+            </a>
+            <a href="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                class="icon2"
+              >
+                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                <path
+                  d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z"
+                />
+              </svg>
+            </a>
+            <a href="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                class="icon2"
+              >
+                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                <path
+                  d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                />
+              </svg>
+            </a>
+            <a href="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                class="icon2"
+              >
+                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                <path
+                  d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

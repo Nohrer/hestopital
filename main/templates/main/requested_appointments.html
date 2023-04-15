@@ -1,0 +1,29 @@
+{% extends 'base_dashboard_patient.html' %} {% load static %} {% block page %}
+
+<div class="attendance-list">
+  <h2 style="text-align: center; margin-top: 18px">Requested Appointments</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Doctor</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for appointment in appointments %}
+      <tr>
+        <td>{{ appointment.doctor }}</td>
+
+        <td>{{ appointment.date }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="2">No appointments requested.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

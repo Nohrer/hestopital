@@ -1,0 +1,177 @@
+{% extends 'base_dashboard_doctor.html' %}{% load static%} {% block page%}
+<style>
+  button.back {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  button.back:hover {
+    background-color: #3e8e41;
+  }
+
+  /* Add some spacing between the sections */
+  section {
+    margin-bottom: 2rem;
+  }
+
+  /* Style the table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table th,
+  table td {
+    padding: 0.5rem;
+    text-align: left;
+  }
+
+  table th {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  /* Add some styling to the buttons */
+  .button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .button:hover {
+    background-color: #27ae60;
+  }
+  .column {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  /* Style the footer */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  footer a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+  }
+
+  footer a:hover {
+    border-bottom: none;
+  }
+  h2 {
+    margin-bottom: 12px;
+    margin-left: 10px;
+  }
+  th:nth-of-type(even) {
+    background: gray !important;
+    color: white !important;
+  }
+
+  th:nth-of-type(odd) {
+    background: white !important;
+    color: black !important;
+  }
+  nav {
+    height: 100vh !important;
+  }
+</style>
+
+<div class="attendance-list" style="width: 80%; margin: 20px auto">
+  <h1>Patient Information</h1>
+  <div class="row">
+    <div class="column">
+      <h2>Personal Information</h2>
+
+      <table>
+        <tbody>
+          <tr>
+            <td>CIN</td>
+            <td>{{result.cin}}</td>
+          </tr>
+          <tr>
+            <td>First Name</td>
+            <td>{{result.firstName}}</td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td>{{result.lastName}}</td>
+          </tr>
+          <tr>
+            <td>Birth Date</td>
+            <td>{{result.birthDate}}</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>{{result.phoneNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <br />
+    {% if user.is_doctor%}
+    <div class="column">
+      <h2>Medical Record</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>date</th>
+            <th>disease</th>
+            <th>View Report</th>
+            <th>Update Report</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for repport in repport %}
+
+          <tr>
+            <td>{{ repport.date }}</td>
+            <td>{{ repport.disease }}</td>
+            <td>
+              <form
+                action="{% url 'report_details_forDoc' repport.id %}"
+                style="text-align: left"
+              >
+                <button type="submit">View Detail</button>
+              </form>
+            </td>
+            <td style="text-align: left; vertical-align: middle">
+              <form action="{% url 'main:update_repport' repport.id %}">
+                <button type="submit">Edit</button>
+              </form>
+            </td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+      {%endif%}
+
+      <button class="back" onclick="window.history.back()">Back</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

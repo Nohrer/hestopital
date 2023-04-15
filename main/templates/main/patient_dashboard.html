@@ -1,0 +1,139 @@
+{% extends 'base_dashboard_patient.html' %} {% load static %} {% block page %}
+<style>
+  .attendance-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .attendance-list h2 {
+    margin: 24px;
+  }
+  .table {
+    min-width: 600px;
+  }
+  .table th,
+  .table td {
+    text-align: center;
+  }
+  .table th:first-child,
+  .table td:first-child {
+    text-align: left;
+  }
+  .table th:last-child,
+  .table td:last-child {
+    text-align: center;
+  }
+  .table td button {
+    margin: 0 5px;
+  }
+  nav {
+    height: 100vh !important;
+  }
+</style>
+<div class="attendance-list">
+  <div>
+    <h2>Accepted Appointments</h2>
+    {% if accepted_appointments %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Doctor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appointment in accepted_appointments %}
+        <tr>
+          <td>{{ appointment.date }}</td>
+          <td>{{ appointment.time }}</td>
+          <td>Dr.{{ appointment.doctor }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No accepted appointments found.</p>
+    {% endif %}
+  </div>
+  <div>
+    <h2>New Proposals</h2>
+    {% if new_proposals %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Doctor</th>
+          <th>Accept</th>
+          <th>Reject</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appointment in new_proposals %}
+        <tr>
+          <td>{{ appointment.date }}</td>
+          <td>{{ appointment.time }}</td>
+          <td>Dr.{{ appointment.doctor }}</td>
+          <td>
+            <form method="post">
+              {% csrf_token %}
+              <input
+                type="hidden"
+                name="appointment_id"
+                value="{{ appointment.id }}"
+              />
+              <input type="hidden" name="action" value="accept" />
+              <button type="submit">Accept</button>
+            </form>
+          </td>
+          <td>
+            <form method="post">
+              {% csrf_token %}
+              <input
+                type="hidden"
+                name="appointment_id"
+                value="{{ appointment.id }}"
+              />
+              <input type="hidden" name="action" value="cancel" />
+              <button type="submit">Cancel</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No new proposals found.</p>
+    {% endif %}
+  </div>
+  <div>
+    <h2>Cancelled Appointments</h2>
+    {% if cancelled_appointments %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Doctor</th>
+          <th>Cause</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appointment in cancelled_appointments %}
+        <tr>
+          <td>{{ appointment.date }}</td>
+          <td>{{ appointment.time }}</td>
+          <td>Dr.{{ appointment.doctor }}</td>
+          <td>{{ appointment.cause }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No cancelled appointments found.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base_dashboard_patient.html' %}{% load static%} {% block page%}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+  }
+  h1 {
+    text-align: left;
+    color: #000000;
+    padding: 0;
+    padding-bottom: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 2.5px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-weight: bold;
+    font-size: 19px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #bdbdbd;
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(
+      90deg,
+      rgba(39, 48, 48, 1) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgba(39, 48, 48, 1) 100%
+    );
+    color: white;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    row-gap: 0;
+  }
+
+  .span-2 {
+    grid-column: span 2;
+  }
+  .grid-item {
+    padding: 7px;
+  }
+
+  .grid-item:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  .main {
+    width: 60%;
+    margin: 0 10px;
+  }
+  h2 {
+    font-size: 25px;
+    text-align: center;
+  }
+</style>
+
+<h2>Request Appointment</h2>
+    {% include 'main/messages.html' %}
+
+    <form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Request</button>
+</form>
+{% endblock %}

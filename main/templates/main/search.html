@@ -1,0 +1,65 @@
+{% extends 'base_dashboard_doctor.html' %} {% load static%}{% block page%}
+<h1>Search Results</h1>
+<button class="back" onclick="window.history.back()">Back</button>
+<style>
+  button.back {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  button.back:hover {
+    background-color: #3e8e41;
+  }
+</style>
+{% if results %}
+
+<section class="attendance">
+  <div class="attendance-list">
+    <h1>My Patients</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Details</th>
+          <th>Create Repport</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for result in results %}
+
+        <tr>
+          <td>{{result.firstName}}</td>
+          <td>{{result.lastName}}</td>
+          <td style="text-align: left; vertical-align: middle">
+            <form action="{% url 'main:detail' result.id %}">
+              <button type="submit">View Detail</button>
+            </form>
+          </td>
+          <td style="text-align: left; vertical-align: middle">
+            <form
+              action="{% url 'main:create_repport' patient_id=result.id  %}"
+              method="get"
+            >
+              <button type="submit">Create New</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      {% else %}
+      <p>No results found.</p>
+      {% endif %}
+    </table>
+  </div>
+</section>
+{% endblock %}

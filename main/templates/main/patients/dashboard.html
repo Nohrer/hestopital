@@ -1,0 +1,48 @@
+{% extends 'main\base.html' %}
+
+{% block content %}
+    <h1>Welcome, {{ user.get_full_name }}!</h1>
+
+    {% if new_proposals %}
+        <h2>New Proposals</h2>
+        <ul>
+            {% for appointment in new_proposals %}
+                <li>
+                    {{ appointment.doctor }} has proposed an appointment on {{ appointment.date }} at {{ appointment.time }}.
+                    {% if appointment.status == 'proposed' %}
+                        {% if appointment.patient == user.patient %}
+                            <form action="{% url 'patients:appointment_response' %}" method="post">
+                                {% csrf_token %}
+                                {{ form.appointment_id }}
+                                {{ form.response }}
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        {% else %}
+                            <p>This appointment has been proposed to another patient.</p>
+                        {% endif %}
+                    {% else %}
+                        <p>This appointment has already been responded to.</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if accepted_appointments %}
+        <h2>Accepted Appointments</h2>
+        <ul>
+            {% for appointment in accepted_appointments %}
+                <li>{{ appointment.doctor }} on {{ appointment.date }} at {{ appointment.time }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if cancelled_appointments %}
+        <h2>Cancelled Appointments</h2>
+        <ul>
+            {% for appointment in cancelled_appointments %}
+                <li>{{ appointment.doctor }} on {{ appointment.date }} at {{ appointment.time }} (cancelled on {{ appointment.updated_at }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

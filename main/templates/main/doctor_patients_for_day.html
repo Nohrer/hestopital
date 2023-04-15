@@ -1,0 +1,102 @@
+{% extends 'base_dashboard_doctor.html' %} {% block page %}
+<style>
+  .date-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 8px;
+    width: 400px;
+    margin: 0 auto;
+  }
+  label {
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    align-self: center;
+  }
+  button {
+    text-align: center;
+    border-radius: 8px;
+    padding: 6px 3px;
+    background: linear-gradient(
+      90deg,
+      rgba(124, 159, 159, 1) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgba(124, 159, 159, 1) 100%
+    );
+
+    font-size: 16px;
+    color: black;
+    transition: 0.8s all;
+    width: 100%;
+  }
+  button:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(39, 48, 48, 1) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgba(39, 48, 48, 1) 100%
+    );
+    color: white;
+  }
+  input[type="date"] {
+    width: 100%;
+    border-radius: 8px;
+    padding: 6px 3px;
+  }
+</style>
+
+<h1>Appointments for {{ date }}</h1>
+
+<form
+  class="date-form"
+  action="{% url 'main:doctor_patients_for_day' %}"
+  method="get"
+>
+  <label for="date">Select date:</label>
+  <input type="date" id="date" name="date" value="{{ date }}" required />
+
+  <button type="submit">Update</button>
+</form>
+
+<ul>
+  <div class="attendance-list">
+    <h1>My Patients</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Details</th>
+          <th>Create Repport</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for patient in patients %}
+        <tr>
+          <td>{{patient.firstName}}</td>
+          <td>{{patient.lastName}}</td>
+          <td style="text-align: left; vertical-align: middle">
+            <form action="{% url 'main:detail' patient.id %}">
+              <button type="submit" class="back">View Detail</button>
+            </form>
+          </td>
+          <td style="text-align: left; vertical-align: middle">
+            <form
+              action="{% url 'main:create_repport' patient_id=patient.id %}"
+              method="get"
+            >
+              <button type="submit" class="back">Create New</button>
+            </form>
+          </td>
+        </tr>
+        {% empty %}
+        <span style="margin-left: 20px; font-weight: bold"
+          >You Have No patients Today</span
+        >
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</ul>
+{% endblock %}

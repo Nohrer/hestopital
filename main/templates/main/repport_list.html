@@ -1,0 +1,10 @@
+{% extends 'base_dashboard_doctor.html' %} {% load static%}{% block page%}
+<h1>Repports</h1>
+<ul>
+  {% for repport in repports %}
+  <li>{{ repport.date }} - {{ repport.disease }}</li>
+  {% empty %}
+  <li>No repports found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
