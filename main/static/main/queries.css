@@ -1,0 +1,125 @@
+/* rem and em do not depend on html font size in media querie 1rem=16px*/
+/*1500px*/
+
+/*1350px*/
+@media (max-width: 84em) {
+  .hero-header {
+    font-size: 4.2rem;
+    margin-top: 3.2rem;
+  }
+  .about {
+    padding-top: 3.2rem;
+  }
+  .section-service {
+    margin-top: 18rem;
+  }
+  .about-header {
+    font-size: 3.6rem;
+  }
+}
+/*1050px*/
+@media (max-width: 63.5em) {
+  html {
+    font-size: 56.25%;
+  }
+  .hero {
+    height: 75vh;
+  }
+  .services-imgs {
+    gap: 1rem;
+    row-gap: 6rem;
+  }
+  .header-navigation {
+    gap: 3rem;
+  }
+}
+/*900px*/
+@media (max-width: 56.25em) {
+  html {
+    font-size: 53%;
+  }
+  .hero-text-box {
+    max-width: 100%;
+    text-align: center;
+    padding: 6.4rem 4rem;
+  }
+  .hero-header {
+    text-align: center;
+  }
+  .hero-testemonials {
+    justify-content: center;
+  }
+  .about-content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 3.6rem;
+  }
+  .hero {
+    height: 60vh;
+  }
+  /*MOBILE NAVIGATION*/
+  .btn-mobile-nav {
+    display: block;
+    padding-right: 2.4rem;
+    margin-top: 1.6rem;
+  }
+  .header-navigation {
+    background-color: rgba(121, 194, 196, 0.95);
+    position: absolute;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(100%);
+    flex-direction: column;
+    gap: 4.8rem;
+    transition: all 0.8s ease-in-out;
+    /*Hide Navigation*/
+    /*1- Hide it visualy*/
+    opacity: 0;
+    /*2- Hide it from mouse and keyboard*/
+    pointer-events: none;
+    /*3- Hide it from screen readers*/
+    visibility: hidden;
+    border-radius: 0;
+  }
+
+  .navigation-link:link,
+  .navigation-link:visited {
+    font-size: 3rem;
+  }
+  .nav-open .header-navigation {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+}
+/*750*/
+@media (max-width: 47em) {
+  html {
+    font-size: 50%;
+  }
+}
+/*400px*/
+@media (max-width: 47em) {
+  .hero {
+    height: 60vh;
+  }
+  .hero-header {
+    margin-top: 0;
+  }
+}
+/*
+- FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+-----03 -SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
