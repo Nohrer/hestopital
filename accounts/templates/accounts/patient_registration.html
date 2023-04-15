@@ -1,0 +1,119 @@
+{% extends 'base_dashboard_receptionist.html' %} {% load static%}{% block page%}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+  }
+  h1 {
+    text-align: left;
+    color: #000000;
+    padding: 0;
+    padding-bottom: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 2.5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #bdbdbd;
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(
+      90deg,
+      rgba(39, 48, 48, 1) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgba(39, 48, 48, 1) 100%
+    );
+    color: white;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    row-gap: 0;
+  }
+
+  .span-2 {
+    grid-column: span 2;
+  }
+  .grid-item {
+    padding: 7px;
+  }
+
+  .grid-item:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  .main {
+    width: 60%;
+    margin: 0 10px;
+  }
+  button {
+    text-align: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    background: linear-gradient(
+      90deg,
+      rgba(124, 159, 159, 1) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgba(124, 159, 159, 1) 100%
+    );
+    font-size: 18px;
+    color: black;
+    transition: 0.8s all;
+    font-weight: bold;
+  }
+  button:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(39, 48, 48, 1) 0%,
+      rgba(22, 145, 145, 1) 50%,
+      rgba(39, 48, 48, 1) 100%
+    );
+    color: rgb(29, 9, 9);
+  }
+</style>
+
+<div>
+  <form method="post">
+    {% load crispy_forms_tags%} {% csrf_token %}
+    <h1 id="title">Create Patient</h1>
+    <div class="wrap">
+      <div class="grid-item span-2">{{form.username|as_crispy_field}}</div>
+      <div class="grid-item">{{form.password1|as_crispy_field}}</div>
+      <div class="grid-item">{{form.password2|as_crispy_field}}</div>
+      <div class="grid-item">{{form.firstName|as_crispy_field}}</div>
+      <div class="grid-item">{{form.lastName|as_crispy_field}}</div>
+      <div class="grid-item">{{form.phoneNumber|as_crispy_field}}</div>
+      <div class="grid-item">{{form.cin|as_crispy_field}}</div>
+      <div class="grid-item span-2">{{form.birthDate|as_crispy_field}}</div>
+    </div>
+    <!-- Button -->
+
+    <button type="Submit">Register</button>
+  </form>
+</div>
+
+{%endblock%}

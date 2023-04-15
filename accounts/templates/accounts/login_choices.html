@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    {% load static%}
+    <style>
+      * {
+        margin: 0;
+      }
+
+      .content {
+        height: 100vh;
+        background: rgb(120, 179, 181);
+        background: linear-gradient(
+          217deg,
+          rgba(120, 179, 181, 1) 0%,
+          rgba(8, 54, 54, 1) 71%,
+          rgba(21, 87, 90, 1) 100%
+        );
+      }
+      .logo-div {
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+      }
+      .logo {
+        width: 220px;
+        filter: invert();
+      }
+      .elements {
+        display: flex;
+        justify-content: center;
+        padding-top: 84px;
+        flex-wrap: wrap;
+        gap: 100px;
+      }
+      .image {
+        border-radius: 8px;
+      }
+      .wraper {
+        position: relative;
+      }
+      .derou-div {
+        background-color: rgba(81, 160, 160, 0.519);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 220px;
+        width: 300px;
+        position: absolute;
+        bottom: -130px;
+        border-bottom-left-radius: 9px;
+        border-bottom-right-radius: 9px;
+        opacity: 0;
+        transition: all 0.8s;
+      }
+      .name {
+        color: white;
+        font-size: 36px;
+        margin-top: 12px;
+      }
+      .login-btn {
+        padding: 12px 96px;
+        margin-top: 32px;
+        font-size: 24px;
+        border-radius: 7px;
+        font-weight: bold;
+        color: rgb(252, 253, 253);
+        background: linear-gradient(
+          217deg,
+          rgba(38, 91, 93, 1) 0%,
+          rgba(8, 54, 54, 1) 71%,
+          rgba(2, 12, 13, 1) 100%
+        );
+        transition: all 0.9s;
+        cursor: pointer;
+      }
+      .login-btn:hover {
+        color: white;
+        background-position: 257px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="logo-div">
+        <a href="{% url 'main:home'%}">
+          <img
+            src="{% static 'accounts/logo.png'%}"
+            alt="logo de hestopital"
+            class="logo"
+        /></a>
+      </div>
+      <div class="elements">
+        <div
+          class="wraper"
+          onmouseenter="appar(this)"
+          onmouseleave="dispa(this)"
+        >
+          <img
+            src="{% static 'accounts/patient.png'%}"
+            alt=" image illustrative de patient"
+            class="image patient-img"
+          />
+          <div id="derou" class="derou-div">
+            <span class="name">Patient</span> <br />
+            <a href="{% url 'main:accounts:patient_login'%}"
+              ><button class="login-btn">Login</button></a
+            >
+          </div>
+        </div>
+
+        <div
+          class="wraper"
+          onmouseenter="appar(this)"
+          onmouseleave="dispa(this)"
+        >
+          <img
+            src="{% static 'accounts/doctors.png'%}"
+            alt=" image illustrative de doctor"
+            class="image doctor-img"
+          />
+          <div id="derou" class="derou-div">
+            <span class="name">Doctor</span> <br />
+            <a href="{% url 'main:accounts:doctor_login'%}"
+              ><button class="login-btn">Login</button></a
+            >
+          </div>
+        </div>
+
+        <div
+          class="wraper"
+          onmouseenter="appar(this)"
+          onmouseleave="dispa(this)"
+        >
+          <img
+            src="{% static 'accounts/scretaire.png'%}"
+            alt=" image illustrative de patient"
+            class="image secraitaire-img"
+          />
+          <div id="derou" class="derou-div">
+            <span class="name">Receptioniste</span> <br />
+            <a href="{% url 'main:accounts:receptionist_login'%}"
+              ><button class="login-btn">Login</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let appar = (e) => {
+        // var div = document.getElementById("derou");
+        e.children[1].style.opacity = "1";
+      };
+      let dispa = (e) => {
+        // var div = document.getElementById("derou");
+        e.children[1].style.opacity = "0";
+      };
+    </script>
+  </body>
+</html>
